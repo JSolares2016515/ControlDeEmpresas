@@ -6,6 +6,8 @@ const Morgan = require('morgan');
 
 const App = Express();
 
+const companyRoutes = require('./routes/company.routes');
+
 App.use(BodyParser.urlencoded({extended: false}));
 App.use(BodyParser.json());
 App.use(Morgan(':method :url :status :res[content-length] - :response-time ms'));
@@ -17,5 +19,7 @@ App.use((req, res, next) => {
 	res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
 	next();
 });
+
+App.use('/company', companyRoutes);
 
 module.exports = App;
