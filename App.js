@@ -7,6 +7,7 @@ const Morgan = require('morgan');
 const App = Express();
 
 const companyRoutes = require('./routes/company.routes');
+const employeeRoutes = require('./routes/employee.routes');
 
 App.use(BodyParser.urlencoded({extended: false}));
 App.use(BodyParser.json());
@@ -21,5 +22,6 @@ App.use((req, res, next) => {
 });
 
 App.use('/company', companyRoutes);
+App.use('/employee', employeeRoutes);
 
 module.exports = App;

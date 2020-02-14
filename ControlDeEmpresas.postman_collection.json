@@ -1,0 +1,321 @@
+{
+	"info": {
+		"_postman_id": "bb377599-ec5b-4572-a56f-5f65ea52d39b",
+		"name": "ControlDeEmpresas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Company",
+			"item": [
+				{
+					"name": "Save",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Deus Ex Bat'z",
+									"type": "text"
+								},
+								{
+									"key": "direction",
+									"value": "Zona Choqomil",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "11111",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "192.168.101.116:3500/company/save",
+							"host": [
+								"192",
+								"168",
+								"101",
+								"116"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"save"
+							]
+						},
+						"description": "Registrar una empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Webby",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "direction",
+									"value": "Zona 4",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "44351735",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "192.168.101.116:3500/company/update/5e470684b13bb525c86da7c9",
+							"host": [
+								"192",
+								"168",
+								"101",
+								"116"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"update",
+								"5e470684b13bb525c86da7c9"
+							]
+						},
+						"description": "Registrar una empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "192.168.101.116:3500/company/delete/5e471326058dcf16987b3692",
+							"host": [
+								"192",
+								"168",
+								"101",
+								"116"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"delete",
+								"5e471326058dcf16987b3692"
+							]
+						},
+						"description": "Registrar una empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Quantity Employees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "192.168.101.116:3500/company/employeesQuantity/5e470684b13bb525c86da7c9",
+							"host": [
+								"192",
+								"168",
+								"101",
+								"116"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"employeesQuantity",
+								"5e470684b13bb525c86da7c9"
+							]
+						},
+						"description": "Cantidad de empleados por empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Set Employee",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "employee",
+									"value": "5e4725186964871470f93bf3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "192.168.101.116:3500/company/addEmployee/5e470684b13bb525c86da7c9",
+							"host": [
+								"192",
+								"168",
+								"101",
+								"116"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"addEmployee",
+								"5e470684b13bb525c86da7c9"
+							]
+						},
+						"description": "Añadir un empleado a la empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Employee",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "employee",
+									"value": "5e4725186964871470f93bf3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "192.168.101.116:3500/company/removeEmployee/5e470684b13bb525c86da7c9",
+							"host": [
+								"192",
+								"168",
+								"101",
+								"116"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"removeEmployee",
+								"5e470684b13bb525c86da7c9"
+							]
+						},
+						"description": "Añadir un empleado a la empresa"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "Save",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Chepe",
+									"type": "text"
+								},
+								{
+									"key": "lastname",
+									"value": "JJAAHH",
+									"type": "text"
+								},
+								{
+									"key": "charge",
+									"value": "Nose",
+									"type": "text"
+								},
+								{
+									"key": "department",
+									"value": "nose",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "192.168.101.116:3500/employee/save",
+							"host": [
+								"192",
+								"168",
+								"101",
+								"116"
+							],
+							"port": "3500",
+							"path": [
+								"employee",
+								"save"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
