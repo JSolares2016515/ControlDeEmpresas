@@ -74,15 +74,19 @@ function employeesQuantity(req, res) {
 function setEmployees(req, res) {
     const companyID = req.params.id;
     const params = req.body;
-    Company.findByIdAndUpdate(companyID, {$push: {employees: params.employee}}, {new: true}, (err, company) => {
-        if (err) {
-            res.status(500).send({message: 'Error en la base de datos'})
-        } else if (company) {
-            res.send({'Employee Added': company});
-        } else {
-            res.status(503).send({message: 'No se pudo agregar al empleado, intente más tarde'});
-        }
-    }).populate('employees');
+    if (params.employee) {
+        Company.findByIdAndUpdate(companyID, {$push: {employees: params.employee}}, {new: true}, (err, company) => {
+            if (err) {
+                res.status(500).send({message: 'Error en la base de datos'})
+            } else if (company) {
+                res.send({'Employee Added': company});
+            } else {
+                res.status(503).send({message: 'No se pudo agregar al empleado, intente más tarde'});
+            }
+        }).populate('employees');
+    } else {
+        res.status(400).send({message: 'Ingrese un empleado'});
+    }
 }
 
 function removeEmployees(req, res) {

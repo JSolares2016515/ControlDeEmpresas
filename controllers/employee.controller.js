@@ -14,7 +14,7 @@ function saveEmployee(req, res) {
             if (err) {
                 res.status(500).send({message: 'Error en la base de datos'});
             } else if (employeeSaved) {
-                res.send({Employee: employeeSaved});
+                res.send({'Employee Saved': employeeSaved});
             } else {
                 res.status(503).send({message: 'Usuario no guardado, intente más tarde'});
             }
@@ -27,9 +27,9 @@ function saveEmployee(req, res) {
 function updateEmployee(req, res) {
     const employeeID = req.params.id;
     const update = req.body;
-    Employee.findByIdAndUpdate(employeeID, update, (err, employeeUpdated) => {
+    Employee.findByIdAndUpdate(employeeID, update, {new: true},(err, employeeUpdated) => {
         if (err) {
-            res.status(500).send({message: ''});
+            res.status(500).send({message: 'Error en la base de datos'});
         } else if (employeeUpdated) {
             res.send({'Employee Updated': employeeUpdated});
         } else {
@@ -38,7 +38,48 @@ function updateEmployee(req, res) {
     });
 }
 
+function deleteEmployee(req, res) {
+    const employeeID = req.params.id;
+    Employee.findByIdAndDelete(employeeID, (err, employeeDeleted) => {
+        if (err) {
+            res.status(500).send({message: 'Error en la base de datos'});
+        } else if (employeeDeleted) {
+            res.send({'Employee Deleted': employeeDeleted});
+        } else {
+            res.status(503).send({message: 'No se ha podido eliminar, intente más tarde'});
+        }
+    });
+}
+
+function searchEmployees(req, res) {
+    const search = req.params.search;
+    Employee.find({$or: [{name: {$regex: `${search}`, $options: 'i'}}, {lastname: {$regex: `${search}`, $options: 'i'}}, {charge: {$regex: `${search}`, $options: 'i'}}, {department: {$regex: `${search}`, $options: 'i'}}]}, (err, employees) => {
+        if (err) {
+            res.status(500).send({message: 'Error en la base de datos', err: err});
+        } else if (employees) {
+            res.send({Employees: employees});
+        } else {
+            res.status(503).send({message: 'No se encontraron empleados'});
+        }
+    });
+}
+
+function listEmployees(req, res) {
+    Employee.find({}, (err, employees) => {
+        if (err) {
+            res.status(500).send({message: 'Error en la base de datos', err: err});
+        } else if (employees) {
+            res.send({Employees: employees});
+        } else {
+            res.status(503).send({message: 'No se encontraron empleados'});
+        }
+    });
+}
+
 module.exports = {
     saveEmployee,
-    updateEmployee
+    updateEmployee,
+    deleteEmployee,
+    searchEmployees,
+    listEmployees
 }
