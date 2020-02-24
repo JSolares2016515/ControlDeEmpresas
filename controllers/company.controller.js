@@ -1,11 +1,13 @@
 'use strict'
 
 const Company = require('../models/company');
+const bcrypt = require('bcrypt-nodejs');
+const jwt = require('../services/jwt');
 
 function registerCompany(req, res) {
     const params = req.body;
     const company = Company();
-    if (params.name) {
+    if (params.name, params.password) {
         Company.findOne({name: params.name}, (err, companyFound) => {
             if (err) {
                 res.status(500).send({message: 'Error en el servidor'});
@@ -15,34 +17,69 @@ function registerCompany(req, res) {
                 company.name = params.name;
                 company.direction = params.direction;
                 company.phone = params.phone;
-                company.save((err, companySaved) => {
+                bcrypt.hash(params.password, null, null, (err, hashPassword) => {
                     if (err) {
-                        res.status(500).send({message: 'Error en la base de datos'});
-                    } else if (companySaved) {
-                        res.send({'Company Saved': companySaved});
+                        res.status(500).send({message: 'Error al encriptar'});
                     } else {
-                        res.status(503).send({message: 'Compania no guardada, intente más tarde'});
+                        company.password = hashPassword;
+
+                        company.save((err, companySaved) => {
+                            if (err) {
+                                res.status(500).send({message: 'Error en la base de datos'});
+                            } else if (companySaved) {
+                                res.send({'Company Saved': companySaved});
+                            } else {
+                                res.status(503).send({message: 'Compania no guardada, intente más tarde'});
+                            }
+                        });
                     }
                 });
             }
         });
     } else {
-        res.status(400).send({message: 'Ingrese el nombre de la empresa'});
+        res.status(400).send({message: 'Ingrese el nombre y contraseña de la empresa'});
     }
 }
 
 function updateCompany(req, res) {
     const companyID = req.params.id;
     const update = req.body;
-    Company.findByIdAndUpdate(companyID, update, {new: true}, (err, companyUpdated) => {
-        if (err) {
-            res.status(500).send({message: 'Error en la base de datos'});
-        } else if (companyUpdated) {
-            res.send({'Company Updated': companyUpdated});
-        } else {
-            res.status(503).send({message: 'No se puedo actualizar, intente más tarde'});
-        }
-    }).populate('employees');
+    if (update.name) {
+        Company.findOne({name: update.name}, (err, companyFound) => {
+            if (err) {
+                res.status(500).send({message: 'Error en el servidor'});
+            } else if (companyFound) {
+                res.status(400).send({message: 'Nombre ya utilizado'});
+            } else if (update.password) {
+                bcrypt.hash(update.password, null, null, (err, hashPassword) => {
+                    if (err) {
+                        res.status(500).send({message: 'Error al encriptar'});
+                    } else {
+                        update.password = hashPassword;
+                        Company.findByIdAndUpdate(companyID, update, {new: true}, (err, companyUpdated) => {
+                            if (err) {
+                                res.status(500).send({message: 'Error en la base de datos'});
+                            } else if (companyUpdated) {
+                                res.send({'Company Updated': companyUpdated});
+                            } else {
+                                res.status(503).send({message: 'No se puedo actualizar, intente más tarde'});
+                            }
+                        }).populate('employees');
+                    }
+                });
+            }
+        });
+    } else {
+        Company.findByIdAndUpdate(companyID, update, {new: true}, (err, companyUpdated) => {
+            if (err) {
+                res.status(500).send({message: 'Error en la base de datos'});
+            } else if (companyUpdated) {
+                res.send({'Company Updated': companyUpdated});
+            } else {
+                res.status(503).send({message: 'No se puedo actualizar, intente más tarde'});
+            }
+        }).populate('employees');
+    }
 }
 
 function deleteCompany(req, res) {
@@ -103,11 +140,42 @@ function removeEmployees(req, res) {
     }).populate('employees');
 }
 
+function login(req, res) {
+    const params = req.body;
+
+    if (params.name && params.password) {
+        Company.findOne({name: params.name}, (err, companyFound) => {
+            if (err) {
+                res.status(500).send({message: 'Error en la base de datos'});
+            } else if (companyFound) {
+                bcrypt.compare(params.password, companyFound.password, (err, checkPassword) => {
+                    if (err) {
+                        res.status(500).send({message: 'Error al comparar contraseñas'});
+                    } else if (checkPassword) {
+                        if (params.getToken) {
+                            res.send({token: jwt.createToken(companyFound)});
+                        } else {
+                            res.send({Company: companyFound});
+                        }
+                    } else {
+                        res.status(503).send({message: 'Contraseña incorrecta'});
+                    }
+                })
+            } else {
+                res.status(503).send({message: 'Usuario no encontrado'});
+            }
+        })
+    } else {
+        res.status(400).send({message: 'Ingrese un usuario y contraseña'});
+    }
+}
+
 module.exports = {
     registerCompany,
     updateCompany,
     deleteCompany,
     employeesQuantity,
     setEmployees,
-    removeEmployees
+    removeEmployees,
+    login
 }

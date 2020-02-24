@@ -8,7 +8,9 @@ const companySchema = Schema({
     name: String,
     direction: String,
     phone: Number,
-    employees: [{type: Schema.Types.ObjectId, ref: 'employee'}]
+    password: String,
+    employees: [{type: Schema.Types.ObjectId, ref: 'employee'}],
+    branchoffices: [{type: Schema.Types.ObjectId, ref: 'branchoffice'}]
 });
 
 module.exports = Mongoose.model('company', companySchema);
