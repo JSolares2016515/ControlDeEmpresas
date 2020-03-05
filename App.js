@@ -8,6 +8,7 @@ const App = Express();
 
 const companyRoutes = require('./routes/company.routes');
 const employeeRoutes = require('./routes/employee.routes');
+const productRoutes = require('./routes/product.routes');
 
 App.use(BodyParser.urlencoded({extended: false}));
 App.use(BodyParser.json());
@@ -23,5 +24,6 @@ App.use((req, res, next) => {
 
 App.use('/company', companyRoutes);
 App.use('/employee', employeeRoutes);
+App.use('/product', productRoutes);
 
 module.exports = App;

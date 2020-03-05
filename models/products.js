@@ -6,6 +6,8 @@ const Schema = Mongoose.Schema;
 
 const productSchema = Schema({
     name: String,
-    type: String,
-    stock: Number,
+    description: String,
+    price: Number
 });
+
+module.exports = Mongoose.model('product', productSchema);

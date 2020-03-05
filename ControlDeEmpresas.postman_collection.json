@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "bb377599-ec5b-4572-a56f-5f65ea52d39b",
+		"_postman_id": "e9f232b8-19ed-4410-a36c-b68cefd6d325",
 		"name": "ControlDeEmpresas",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -25,33 +25,172 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Deus Ex Bat'z",
+									"value": "Webby",
 									"type": "text"
 								},
 								{
 									"key": "direction",
-									"value": "Zona Choqomil",
+									"value": "Zona 4",
 									"type": "text"
 								},
 								{
 									"key": "phone",
 									"value": "11111",
 									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "TopLop",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "direction",
+									"value": "Zona 18",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "22222",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Deus Ex Bat'z",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "direction",
+									"value": "Zona Choqomil",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "33333",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
 						"url": {
-							"raw": "192.168.101.116:3500/company/save",
+							"raw": "localhost:3500/company/save",
 							"host": [
-								"192",
-								"168",
-								"101",
-								"116"
+								"localhost"
 							],
 							"port": "3500",
 							"path": [
 								"company",
 								"save"
+							]
+						},
+						"description": "Registrar una empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Webby",
+									"type": "text"
+								},
+								{
+									"key": "direction",
+									"value": "Zona 4",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "11111",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "TopLop",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "direction",
+									"value": "Zona 18",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "22222",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Deus Ex Bat'z",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "direction",
+									"value": "Zona Choqomil",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "33333",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "getToken",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3500/company/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"login"
 							]
 						},
 						"description": "Registrar una empresa"
@@ -68,6 +207,11 @@
 								"name": "Content-Type",
 								"type": "text",
 								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTVmNzg0ZDY0M2E5YTI4NDBhOGE1MjEiLCJuYW1lIjoiV2ViYnkiLCJpYXQiOjE1ODMzMTUwNTUsImV4cCI6MTU4MzMxNjg1NX0.tcJ-NZ3gMxiJRrjCagodtM4oYcnN5nmuiVIwFr1V9-k\"",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -76,36 +220,30 @@
 								{
 									"key": "name",
 									"value": "Webby",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "direction",
 									"value": "Zona 4",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "phone",
 									"value": "44351735",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "192.168.101.116:3500/company/update/5e470684b13bb525c86da7c9",
+							"raw": "localhost:3500/company/update/5e5f784d643a9a2840a8a521",
 							"host": [
-								"192",
-								"168",
-								"101",
-								"116"
+								"localhost"
 							],
 							"port": "3500",
 							"path": [
 								"company",
 								"update",
-								"5e470684b13bb525c86da7c9"
+								"5e5f784d643a9a2840a8a521"
 							]
 						},
 						"description": "Registrar una empresa"
@@ -129,12 +267,9 @@
 							"urlencoded": []
 						},
 						"url": {
-							"raw": "192.168.101.116:3500/company/delete/5e471326058dcf16987b3692",
+							"raw": "localhost:3500/company/delete/5e471326058dcf16987b3692",
 							"host": [
-								"192",
-								"168",
-								"101",
-								"116"
+								"localhost"
 							],
 							"port": "3500",
 							"path": [
@@ -153,21 +288,37 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "192.168.101.116:3500/company/employeesQuantity/5e470684b13bb525c86da7c9",
+							"raw": "localhost:3500/company/employeesQuantity/5e4afaed77b801182c75f44e",
 							"host": [
-								"192",
-								"168",
-								"101",
-								"116"
+								"localhost"
 							],
 							"port": "3500",
 							"path": [
 								"company",
 								"employeesQuantity",
-								"5e470684b13bb525c86da7c9"
+								"5e4afaed77b801182c75f44e"
 							]
 						},
 						"description": "Cantidad de empleados por empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3500/company/list",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"list"
+							]
+						}
 					},
 					"response": []
 				},
@@ -181,6 +332,11 @@
 								"name": "Content-Type",
 								"value": "application/x-www-form-urlencoded",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTVmNzg0ZDY0M2E5YTI4NDBhOGE1MjEiLCJuYW1lIjoiV2ViYnkiLCJpYXQiOjE1ODMzMTk3NzIsImV4cCI6MTU4MzMyMTU3Mn0.uAk3D6HhGoeaM2qc7Hh8cuZVrLmobOMDMnv8Mn7kVBc\"",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -188,24 +344,21 @@
 							"urlencoded": [
 								{
 									"key": "employee",
-									"value": "5e4725186964871470f93bf3",
+									"value": "5e5f8abb25e8510354681204",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "192.168.101.116:3500/company/addEmployee/5e470684b13bb525c86da7c9",
+							"raw": "localhost:3500/company/addEmployee/5e5f784d643a9a2840a8a521",
 							"host": [
-								"192",
-								"168",
-								"101",
-								"116"
+								"localhost"
 							],
 							"port": "3500",
 							"path": [
 								"company",
 								"addEmployee",
-								"5e470684b13bb525c86da7c9"
+								"5e5f784d643a9a2840a8a521"
 							]
 						},
 						"description": "Añadir un empleado a la empresa"
@@ -229,24 +382,449 @@
 							"urlencoded": [
 								{
 									"key": "employee",
-									"value": "5e4725186964871470f93bf3",
+									"value": "5e4afa3077b801182c75f44d",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "192.168.101.116:3500/company/removeEmployee/5e470684b13bb525c86da7c9",
+							"raw": "localhost:3500/company/removeEmployee/5e4afaed77b801182c75f44e",
 							"host": [
-								"192",
-								"168",
-								"101",
-								"116"
+								"localhost"
 							],
 							"port": "3500",
 							"path": [
 								"company",
 								"removeEmployee",
-								"5e470684b13bb525c86da7c9"
+								"5e4afaed77b801182c75f44e"
+							]
+						},
+						"description": "Añadir un empleado a la empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Set Branch",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTYwY2QzOGM5MDMzYjIwYTg1MzUyNmMiLCJuYW1lIjoiV2ViYnkiLCJpYXQiOjE1ODM0MDIzMzgsImV4cCI6MTU4MzQwNDEzOH0.8eixGqMo_hPGe0q-qa9vkQzbSxIm-jYeVBJXcWZfK38\""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Webby",
+									"type": "text"
+								},
+								{
+									"key": "direction",
+									"value": "Zona 4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3500/company/addBranch/5e60cd38c9033b20a853526c",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"addBranch",
+								"5e60cd38c9033b20a853526c"
+							]
+						},
+						"description": "Añadir un empleado a la empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Branch",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTYwODk4NDZkMzdhZTI5NjBlMjJjZDYiLCJuYW1lIjoiV2ViYnkiLCJpYXQiOjE1ODMzODg1MTcsImV4cCI6MTU4MzM5MDMxN30.gP6lfhOQIaCw_op6W5_rnTOpvUI9_8Spv9bKSThe7C8\""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Webby4",
+									"type": "text"
+								},
+								{
+									"key": "direction",
+									"value": "Zona 4",
+									"type": "text"
+								},
+								{
+									"key": "branch",
+									"value": "5e6089cd6d37ae2960e22cd9",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3500/company/updateBranch/5e6089846d37ae2960e22cd6",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"updateBranch",
+								"5e6089846d37ae2960e22cd6"
+							]
+						},
+						"description": "Añadir un empleado a la empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove  Branch",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTYwODk4NDZkMzdhZTI5NjBlMjJjZDYiLCJuYW1lIjoiV2ViYnkiLCJpYXQiOjE1ODMzODg1MTcsImV4cCI6MTU4MzM5MDMxN30.gP6lfhOQIaCw_op6W5_rnTOpvUI9_8Spv9bKSThe7C8\""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Webby4",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "direction",
+									"value": "Zona 4",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "branch",
+									"value": "5e608a1e6d37ae2960e22cdc",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3500/company/removeBranch/5e6089846d37ae2960e22cd6",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"removeBranch",
+								"5e6089846d37ae2960e22cd6"
+							]
+						},
+						"description": "Añadir un empleado a la empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "List Branchs",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTYwYjBmYzRjNmM4ZDI1NGNmMmQwNjciLCJuYW1lIjoiV2ViYnkiLCJpYXQiOjE1ODM0MDE1NjksImV4cCI6MTU4MzQwMzM2OX0.2Es8mWMFwSIxtBT6iLQ6U7b9QHBPqIwwzag45iAG2bc\""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3500/company/listBranchs/5e60b0fc4c6c8d254cf2d067",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"listBranchs",
+								"5e60b0fc4c6c8d254cf2d067"
+							]
+						},
+						"description": "Añadir un empleado a la empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Set Products Company",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTYwY2QzOGM5MDMzYjIwYTg1MzUyNmMiLCJuYW1lIjoiV2ViYnkiLCJpYXQiOjE1ODM0MDIzMzgsImV4cCI6MTU4MzQwNDEzOH0.8eixGqMo_hPGe0q-qa9vkQzbSxIm-jYeVBJXcWZfK38\""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product",
+									"value": "5e60cdb0c9033b20a8535271",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "200",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3500/company/addProductCompany/5e60cd38c9033b20a853526c",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"addProductCompany",
+								"5e60cd38c9033b20a853526c"
+							]
+						},
+						"description": "Añadir un empleado a la empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product Company",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTYwYjBmYzRjNmM4ZDI1NGNmMmQwNjciLCJuYW1lIjoiV2ViYnkiLCJpYXQiOjE1ODMzOTgxNTksImV4cCI6MTU4MzM5OTk1OX0.C9jwEAiZ8_27qD5emppN9s3jN84slUcvdJBdll5w3h0\""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product",
+									"value": "5e60b26687f99d2658f09643",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "300",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3500/company/updateProductCompany/5e60b0fc4c6c8d254cf2d067",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"updateProductCompany",
+								"5e60b0fc4c6c8d254cf2d067"
+							]
+						},
+						"description": "Añadir un empleado a la empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Product Company",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTYwYjBmYzRjNmM4ZDI1NGNmMmQwNjciLCJuYW1lIjoiV2ViYnkiLCJpYXQiOjE1ODMzOTgxNTksImV4cCI6MTU4MzM5OTk1OX0.C9jwEAiZ8_27qD5emppN9s3jN84slUcvdJBdll5w3h0\""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product",
+									"value": "5e60b26687f99d2658f09643",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3500/company/removeProductCompany/5e60b0fc4c6c8d254cf2d067",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"removeProductCompany",
+								"5e60b0fc4c6c8d254cf2d067"
+							]
+						},
+						"description": "Añadir un empleado a la empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "List Products Company",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTYwYjBmYzRjNmM4ZDI1NGNmMmQwNjciLCJuYW1lIjoiV2ViYnkiLCJpYXQiOjE1ODMzOTcwMjEsImV4cCI6MTU4MzM5ODgyMX0.BAr-loIoEafF75cua4E5rTZkFq-noDjfKdjAczZ39_A\""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3500/company/listProductsCompany/5e60b0fc4c6c8d254cf2d067",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"listProductsCompany",
+								"5e60b0fc4c6c8d254cf2d067"
+							]
+						},
+						"description": "Añadir un empleado a la empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Set Products Branch",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTYwY2QzOGM5MDMzYjIwYTg1MzUyNmMiLCJuYW1lIjoiV2ViYnkiLCJpYXQiOjE1ODM0MDIzMzgsImV4cCI6MTU4MzQwNDEzOH0.8eixGqMo_hPGe0q-qa9vkQzbSxIm-jYeVBJXcWZfK38\""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product",
+									"value": "5e60cdb0c9033b20a8535271",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "40",
+									"type": "text"
+								},
+								{
+									"key": "branch",
+									"value": "5e60cd7ac9033b20a853526e",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3500/company/addProductBranch/5e60cd38c9033b20a853526c",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"addProductBranch",
+								"5e60cd38c9033b20a853526c"
 							]
 						},
 						"description": "Añadir un empleado a la empresa"
@@ -276,38 +854,461 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Chepe",
+									"value": "Jose Francisco",
 									"type": "text"
 								},
 								{
 									"key": "lastname",
-									"value": "JJAAHH",
+									"value": "Solares Ibarra",
 									"type": "text"
 								},
 								{
 									"key": "charge",
-									"value": "Nose",
+									"value": "Fundador",
 									"type": "text"
 								},
 								{
 									"key": "department",
-									"value": "nose",
+									"value": "Direccion General",
 									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Jose Jorge",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "lastname",
+									"value": "Ávila Amezquita",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "charge",
+									"value": "Jefe Recursos Humanos",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "department",
+									"value": "RRHH",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Ronal",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "lastname",
+									"value": "Manuel Estrada",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "charge",
+									"value": "Jefe de Desarrollo",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "department",
+									"value": "Desarrollo WEB",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "JJ",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "lastname",
+									"value": "AA",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "charge",
+									"value": "HJSHS",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "department",
+									"value": "RRHH",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
 						"url": {
-							"raw": "192.168.101.116:3500/employee/save",
+							"raw": "localhost:3500/employee/save",
 							"host": [
-								"192",
-								"168",
-								"101",
-								"116"
+								"localhost"
 							],
 							"port": "3500",
 							"path": [
 								"employee",
 								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Jose Francisco",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "lastname",
+									"value": "Solares Ibarra",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "charge",
+									"value": "Fundador",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "department",
+									"value": "Direccion General",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Jose Jorge",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "lastname",
+									"value": "Ávila Amezquita",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "charge",
+									"value": "Jefe Recursos Humanos",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "department",
+									"value": "RRHH",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Ronal Benedicto",
+									"type": "text"
+								},
+								{
+									"key": "lastname",
+									"value": "Manuel Estrada",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "charge",
+									"value": "Jefe de Desarrollo",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "department",
+									"value": "Desarrollo WEB",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3500/employee/update/5e4af74ae7abf61cc4d7eae4",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"employee",
+								"update",
+								"5e4af74ae7abf61cc4d7eae4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3500/employee/delete/5e4afa3077b801182c75f44d",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"employee",
+								"delete",
+								"5e4afa3077b801182c75f44d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3500/employee/search/",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"employee",
+								"search",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Employees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3500/employee/list",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"employee",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Save",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Manzanas",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Manzanas Rojas",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Peras",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "Peras",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3500/product/add",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"product",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Peras",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Peras Amarillas",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "2.5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3500/product/update/5e60acdde1874c2f5841d12d",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"product",
+								"update",
+								"5e60acdde1874c2f5841d12d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3500/product/delete/5e60acfee1874c2f5841d12e",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"product",
+								"delete",
+								"5e60acfee1874c2f5841d12e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3500/product/list",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"product",
+								"list"
 							]
 						}
 					},
