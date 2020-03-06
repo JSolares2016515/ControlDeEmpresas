@@ -37,7 +37,11 @@ api.get('/listProductsCompany/:id', middlewareAuth.ensureAuth, companyController
 
 api.put('/addProductBranch/:id', middlewareAuth.ensureAuth, companyController.setProductBranch);
 api.put('/removeProductBranch/:id', middlewareAuth.ensureAuth, companyController.removeProductBranch);
+
+
 api.get('/stockCompany/:id', middlewareAuth.ensureAuth, companyController.stockCompany);
+api.get('/stockBranch/:idC/:idB', middlewareAuth.ensureAuth, companyController.stockBranch);
+api.get('/searchProductCompany/:id/:search',middlewareAuth.ensureAuth, companyController.searchProductCompany);
 
 
 module.exports = api;

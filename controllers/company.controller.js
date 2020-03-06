@@ -4,6 +4,7 @@ const Company = require('../models/company');
 const branchOffice = require('../models/branchOffice');
 const bcrypt = require('bcrypt-nodejs');
 const jwt = require('../services/jwt');
+const Mongoose = require('mongoose');
 
 function registerCompany(req, res) {
     const params = req.body;
@@ -167,7 +168,7 @@ function listCompanies(req, res) {
         } else {
             res.status(503).send({message: 'No se encontro ninguna empresa, intente más tarde'});
         }
-    }).populate('employees').populate({path: 'products.product', model: 'product'});
+    }).populate('employees').populate({path: 'branchoffices.products.product', model: 'product'}).populate({path: 'products.product', model: 'product'});
 }
 
 //PARTE 2
@@ -403,15 +404,51 @@ function stockCompany(req, res) {
     if (companyID != req.company.sub) {
         res.status(403).send({message: 'Error de permisos, compañia no logeada'});
     } else {
-        Company.aggregate({$group: {'product._id': '$products._id', 'quantity': {$sum: ['$products.quantity', '$branchoffices.products.quantity']}}}, (err, company) => {
+        Company.findById(companyID, (err, company) => {
             if (err) {
                 res.status(500).send({message: 'Error en la base de datos', err: err});
             } else if (company) {
-                res.send({'Products': company});
+                res.send({'Company Name': company.name, 'Products': company.products});
             } else {
                 res.status(503).send({message: 'No se pudo eliminar el producto de la sucursal, intente más tarde'});
             }
-        });
+        }).populate('employees').populate({path: 'branchoffices.products.product', model: 'product'}).populate({path: 'products.product', model: 'product'});
+    }
+}
+
+function stockBranch(req, res) {
+    const companyID = req.params.idC;
+    const branchID = req.params.idB;
+    if (companyID != req.company.sub) {
+        res.status(403).send({message: 'Error de permisos, compañia no logeada'});
+    } else {
+        Company.findOne({_id: companyID, 'branchoffices._id': branchID}, {'branchoffices.$.products': 1}, (err, company) => {
+            if (err) {
+                res.status(500).send({message: 'Error en la base de datos', err: err});
+            } else if (company) {
+                res.send({Company: company});
+            } else {
+                res.status(503).send({message: 'No se encontraron productos en la sucursal, intente más tarde'});
+            }
+        }).populate('employees').populate({path: 'branchoffices.products.product', model: 'product'}).populate({path: 'products.product', model: 'product'});
+    }
+}
+
+function searchProductCompany(req, res) {
+    const companyID = req.params.id;
+    const search = req.params.search;
+    if (companyID != req.company.sub) {
+        res.status(403).send({message: 'Error de permisos, compañia no logeada'});
+    } else {
+        Company.aggregate([{$match: {_id: Mongoose.Types.ObjectId(companyID)}}], (err, company) => {
+            if (err) {
+                res.status(500).send({message: 'Error en la base de datos', err: err});
+            } else if (company) {
+                res.send({Product: company});
+            } else {
+                res.status(503).send({message: 'No se encontraron productos en la sucursal, intente más tarde'});
+            }
+            });
     }
 }
 
@@ -434,5 +471,7 @@ module.exports = {
     listProductsCompany,
     setProductBranch,
     removeProductBranch,
-    stockCompany
+    stockCompany,
+    stockBranch,
+    searchProductCompany
 }

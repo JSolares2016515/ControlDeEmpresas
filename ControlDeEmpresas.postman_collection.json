@@ -417,7 +417,7 @@
 							{
 								"key": "Authorization",
 								"type": "text",
-								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTYwY2QzOGM5MDMzYjIwYTg1MzUyNmMiLCJuYW1lIjoiV2ViYnkiLCJpYXQiOjE1ODM0MDIzMzgsImV4cCI6MTU4MzQwNDEzOH0.8eixGqMo_hPGe0q-qa9vkQzbSxIm-jYeVBJXcWZfK38\""
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTYwY2QzOGM5MDMzYjIwYTg1MzUyNmMiLCJuYW1lIjoiV2ViYnkiLCJpYXQiOjE1ODM0NzI2NDMsImV4cCI6MTU4MzQ3NDQ0M30.eLlQcMuHqD3bE8FBLMCVjFI6jI7c4yIUfEptiIR6Cmo\""
 							}
 						],
 						"body": {
@@ -426,11 +426,23 @@
 								{
 									"key": "name",
 									"value": "Webby",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "direction",
 									"value": "Zona 4",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Webbyy",
+									"type": "text"
+								},
+								{
+									"key": "direction",
+									"value": "Zona 1",
 									"type": "text"
 								}
 							]
@@ -792,7 +804,7 @@
 							{
 								"key": "Authorization",
 								"type": "text",
-								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTYwY2QzOGM5MDMzYjIwYTg1MzUyNmMiLCJuYW1lIjoiV2ViYnkiLCJpYXQiOjE1ODM0MDIzMzgsImV4cCI6MTU4MzQwNDEzOH0.8eixGqMo_hPGe0q-qa9vkQzbSxIm-jYeVBJXcWZfK38\""
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTYwY2QzOGM5MDMzYjIwYTg1MzUyNmMiLCJuYW1lIjoiV2ViYnkiLCJpYXQiOjE1ODM0MDQ5MDQsImV4cCI6MTU4MzQwNjcwNH0.eURTGYOoRo0NADLW9DGBWoAlFmSEGp8ucjfB-ZbSAQA\""
 							}
 						],
 						"body": {
@@ -825,6 +837,177 @@
 								"company",
 								"addProductBranch",
 								"5e60cd38c9033b20a853526c"
+							]
+						},
+						"description": "Añadir un empleado a la empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Products Branch",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTYwY2QzOGM5MDMzYjIwYTg1MzUyNmMiLCJuYW1lIjoiV2ViYnkiLCJpYXQiOjE1ODM0MDIzMzgsImV4cCI6MTU4MzQwNDEzOH0.8eixGqMo_hPGe0q-qa9vkQzbSxIm-jYeVBJXcWZfK38\""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product",
+									"value": "5e60cdb0c9033b20a8535271",
+									"type": "text"
+								},
+								{
+									"key": "branch",
+									"value": "5e60cd7ac9033b20a853526e",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3500/company/removeProductBranch/5e60cd38c9033b20a853526c",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"removeProductBranch",
+								"5e60cd38c9033b20a853526c"
+							]
+						},
+						"description": "Añadir un empleado a la empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Stock Company",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTYwY2QzOGM5MDMzYjIwYTg1MzUyNmMiLCJuYW1lIjoiV2ViYnkiLCJpYXQiOjE1ODM0MDQ5MDQsImV4cCI6MTU4MzQwNjcwNH0.eURTGYOoRo0NADLW9DGBWoAlFmSEGp8ucjfB-ZbSAQA\""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3500/company/stockCompany/5e60cd38c9033b20a853526c",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"stockCompany",
+								"5e60cd38c9033b20a853526c"
+							]
+						},
+						"description": "Añadir un empleado a la empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Stock Branch",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTYwY2QzOGM5MDMzYjIwYTg1MzUyNmMiLCJuYW1lIjoiV2ViYnkiLCJpYXQiOjE1ODM0NzI2NDMsImV4cCI6MTU4MzQ3NDQ0M30.eLlQcMuHqD3bE8FBLMCVjFI6jI7c4yIUfEptiIR6Cmo\""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3500/company/stockBranch/5e60cd38c9033b20a853526c/5e60cd7ac9033b20a853526e",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"stockBranch",
+								"5e60cd38c9033b20a853526c",
+								"5e60cd7ac9033b20a853526e"
+							]
+						},
+						"description": "Añadir un empleado a la empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Search Product Company",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"warning": "Value contains invalid newline characters.",
+								"key": "Authorization",
+								"type": "text",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTYwY2QzOGM5MDMzYjIwYTg1MzUyNmMiLCJuYW1lIjoiV2ViYnkiLCJpYXQiOjE1ODM0NzYyNjAsImV4cCI6MTU4MzQ3ODA2MH0.VcJk2b3_QobYhv-wZE6JIHILVHG1QIILONqVXtrQxDs\""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3500/company/searchProductCompany/5e60cd38c9033b20a853526c/Manzanas",
+							"host": [
+								"localhost"
+							],
+							"port": "3500",
+							"path": [
+								"company",
+								"searchProductCompany",
+								"5e60cd38c9033b20a853526c",
+								"Manzanas"
 							]
 						},
 						"description": "Añadir un empleado a la empresa"
