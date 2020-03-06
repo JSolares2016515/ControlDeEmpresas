@@ -2,6 +2,7 @@
 
 const Company = require('../models/company');
 const branchOffice = require('../models/branchOffice');
+const Product = require('../models/products');
 const bcrypt = require('bcrypt-nodejs');
 const jwt = require('../services/jwt');
 const Mongoose = require('mongoose');
@@ -369,7 +370,7 @@ function setProductBranch(req, res) {
                     if (err) {
                         res.status(500).send({message: 'Error en la base de datos', err: err});
                     } else if (productUpdated) {
-                        res.send({'Product Added': company});
+                        res.send({'Product Added': productUpdated});
                     } else {
                         res.status(503).send({message: 'No se pudo actualizar el producto en el almacen'});
                     }
@@ -422,15 +423,23 @@ function stockBranch(req, res) {
     if (companyID != req.company.sub) {
         res.status(403).send({message: 'Error de permisos, compañia no logeada'});
     } else {
-        Company.findOne({_id: companyID, 'branchoffices._id': branchID}, {'branchoffices.$.products': 1}, (err, company) => {
+        Company.aggregate([{$match: {_id: Mongoose.Types.ObjectId(companyID),'branchoffices._id': Mongoose.Types.ObjectId(branchID)}}, {$unwind: '$branchoffices'}, {$project: {'branchoffices.name': 1, 'branchoffices.products': 1}}], (err, company) => {
             if (err) {
                 res.status(500).send({message: 'Error en la base de datos', err: err});
             } else if (company) {
-                res.send({Company: company});
+                Product.populate(company, {path: 'branchoffices.products.product'}, (err, companyPopulated) =>{
+                    if (err) {
+                        res.status(500).send({message: 'Error en la base de datos', err: err});
+                    } else if (companyPopulated) {
+                        res.send({Branch: companyPopulated})
+                    } else {
+                        res.status(503).send({message: 'No se pudo popular el documento, intente más tarde'});
+                    }
+                });
             } else {
                 res.status(503).send({message: 'No se encontraron productos en la sucursal, intente más tarde'});
             }
-        }).populate('employees').populate({path: 'branchoffices.products.product', model: 'product'}).populate({path: 'products.product', model: 'product'});
+        });
     }
 }
 
@@ -440,7 +449,7 @@ function searchProductCompany(req, res) {
     if (companyID != req.company.sub) {
         res.status(403).send({message: 'Error de permisos, compañia no logeada'});
     } else {
-        Company.aggregate([{$match: {_id: Mongoose.Types.ObjectId(companyID)}}], (err, company) => {
+        Company.aggregate([{$match: {_id: Mongoose.Types.ObjectId(companyID)}}, ], (err, company) => {
             if (err) {
                 res.status(500).send({message: 'Error en la base de datos', err: err});
             } else if (company) {
@@ -448,7 +457,7 @@ function searchProductCompany(req, res) {
             } else {
                 res.status(503).send({message: 'No se encontraron productos en la sucursal, intente más tarde'});
             }
-            });
+        });
     }
 }
 
