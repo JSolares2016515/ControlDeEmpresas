@@ -1,2 +1,2 @@
 # ControlDeEmpresas
-Control de empresas
+Control de empresas hecho en NodeJs.
